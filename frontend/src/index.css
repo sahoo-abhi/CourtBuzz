@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+:root {
+  --text-color-primary: #1f2937;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --border-color: #e5e7eb;
+}
+
+html.dark {
+  --text-color-primary: #f5f5f5;
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --border-color: #333333;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: white;
+  font-family:
+    Inter,
+    sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background: #020617;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html:not(.dark) {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+html:not(.dark) header {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  background: #f9fafb !important;
+  color: #1f2937 !important;
+  border-color: #e5e7eb !important;
+}
+
+html:not(.dark) input::placeholder {
+  color: #9ca3af !important;
+}
+
+html:not(.dark) button {
+  color: #1f2937 !important;
+}
+
+html:not(.dark) .bg-slate-950 {
+  background: #ffffff !important;
+}
+
+html:not(.dark) .bg-slate-900 {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) .bg-slate-800 {
+  background: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) .border-slate-800 {
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) .text-white {
+  color: #1f2937 !important;
+}
+
+html:not(.dark) .text-slate-300 {
+  color: #6b7280 !important;
+}
+
+html:not(.dark) .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+html:not(.dark) .text-slate-500 {
+  color: #6b7280 !important;
+}
+
+html:not(.dark) .hover\:bg-slate-700:hover {
+  background: #f8fafc !important;
+  opacity: 0.8;
+}
+
+html:not(.dark) .hover\:bg-slate-800:hover {
+  background: #f8fafc !important;
+  opacity: 0.8;
+}
+
+html:not(.dark) button:hover {
+  opacity: 0.9 !important;
+  background: inherit !important;
+}
+
+html:not(.dark) a:hover {
+  opacity: 0.8 !important;
+}
+
+/* Card specific styling for light theme */
+html:not(.dark) div[class*="bg-slate"] {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+html:not(.dark) .rounded-xl {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Tournament and match cards */
+html:not(.dark) section {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) tr {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html:not(.dark) td,
+html:not(.dark) th {
+  color: #1f2937 !important;
+}
+
+html:not(.dark) .text-amber-400 {
+  color: #d97706 !important;
+}
+
+html:not(.dark) .text-amber-500 {
+  color: #d97706 !important;
+}
+
+html:not(.dark) .bg-amber-500 {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .bg-red-500 {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .bg-red-500\/10 {
+  background: #fee2e2 !important;
+}
+
+html:not(.dark) .text-red-400 {
+  color: #f87171 !important;
+}
+
+/* Ensure links and interactive elements are visible */
+html:not(.dark) a {
+  color: #d97706 !important;
+}
+
+html:not(.dark) a:hover {
+  color: #b45309 !important;
+}
+
+/* Remove dark backgrounds from match rows */
+html:not(.dark) .hover\:bg-slate-900:hover {
+  background: transparent !important;
+}
+
+/* ── Premium additions ─────────────────────────────── */
+
+/* Animated live pulse dot */
+.live-dot {
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* Thin premium scrollbar */
+::-webkit-scrollbar        { width: 4px; height: 4px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: #1e293b; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+/* Stats strip dividers */
+.stats-divider {
+  width: 1px;
+  height: 24px;
+  background: #1e293b;
+  flex-shrink: 0;
+}

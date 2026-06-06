@@ -1,0 +1,357 @@
+/* Landing Page Styles for CourtBuzz */
+
+:root {
+  --accent-color: #f59e0b;
+  --text-color: #f5f5f5;
+  --bg-color: #0f0f0f;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #87ceeb 0%,
+    #e0f6ff 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.is-in .stage {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Sky and Mountains */
+.sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #87ceeb 0%,
+    #e0f6ff 100%
+  );
+  z-index: 1;
+}
+
+.mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2;
+  opacity: 0.2;
+}
+
+.mountains.back {
+  height: 35%;
+  opacity: 0.12;
+}
+
+/* Fog Layers */
+.fog {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+.fog svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.fog-far {
+  z-index: 3;
+  animation: driftSlow 20s linear infinite;
+}
+
+.fog-mid {
+  z-index: 4;
+  animation: driftMid 15s linear infinite;
+}
+
+@keyframes driftSlow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes driftMid {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-80px);
+  }
+}
+
+/* Big Type - Letter animation */
+.bigtype {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: normal;
+  padding: 0 2rem;
+  max-width: 95vw;
+}
+
+.word {
+  display: inline-block;
+  margin-right: 0.2em;
+}
+
+.ltr {
+  display: inline-block;
+  animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(var(--i) * 0.08s);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px) rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+/* Shuttle Animation */
+.shuttle-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 15;
+  transform: translate(-50%, -50%);
+}
+
+.shuttle-rise {
+  animation: riseIn 1.8s ease-out 0.3s backwards;
+  animation-fill-mode: both;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(200px) translateX(-150px) scale(0.3) rotateZ(-45deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1) rotateZ(0);
+  }
+}
+
+.speedlines {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 60px;
+  z-index: -1;
+}
+
+.speedlines span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(245, 158, 11, 0.5),
+    transparent
+  );
+  opacity: 0;
+  animation: speedline 1.2s ease-out 0.5s;
+}
+
+.speedlines span:nth-child(1) {
+  animation-delay: 0.5s;
+  top: 20%;
+}
+
+.speedlines span:nth-child(2) {
+  animation-delay: 0.7s;
+  top: 40%;
+}
+
+.speedlines span:nth-child(3) {
+  animation-delay: 0.9s;
+  top: 60%;
+}
+
+.speedlines span:nth-child(4) {
+  animation-delay: 1.1s;
+  top: 80%;
+}
+
+@keyframes speedline {
+  from {
+    opacity: 0.8;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.shuttle-float {
+  position: relative;
+  animation: float 3s ease-in-out 2.2s infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.shuttle {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.shuttle:hover {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.shuttle.spin {
+  animation: spin360 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes spin360 {
+  0% {
+    transform: rotateZ(0) scale(1);
+  }
+  50% {
+    transform: rotateZ(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotateZ(360deg) scale(1);
+  }
+}
+
+/* Shine Effect */
+.shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 80%
+  );
+  animation: shineMove 4s infinite;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@keyframes shineMove {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Hero Copy */
+.hero-copy {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.tagline {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: #1a3a52;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  animation: fadeInUp 1s ease-out 0.5s backwards;
+  line-height: 1.6;
+}
+
+.tg-accent {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bigtype {
+    font-size: clamp(2rem, 10vw, 6rem);
+    letter-spacing: 0.1em;
+    padding: 0 1.5rem;
+    max-width: 95vw;
+  }
+
+  .shuttle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
